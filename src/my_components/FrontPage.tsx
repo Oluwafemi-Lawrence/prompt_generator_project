@@ -1,9 +1,10 @@
-import { Box, Button, Center, Input, Stack } from '@chakra-ui/react'
+import { Text, Box, Button, Center, Input, Stack, Spinner } from '@chakra-ui/react'
 import { Field } from "@/components/ui/field"
 import { useForm } from "react-hook-form"
-import { FormEvent } from 'react'
 interface FormValues {
   url: string
+  
+  
   
 }
 
@@ -15,10 +16,11 @@ const FrontPage = () => {
     formState: { errors },
   } = useForm<FormValues>();
 
-  const onSubmit = handleSubmit((data:FormEvent) => console.log(data))
+  const onSubmit = handleSubmit((data)=> console.log(data));
 
   return (
     <Center bg="#2a2955" h="100vh" maxW="100vw">
+     <Stack gap="4" align="center" width="100%">
        <Box rounded="md" background="white" width="60%"  padding="4" color="#2a2955">
        <form onSubmit={onSubmit}>
       <Stack gap="4" align="center" maxW="100%">
@@ -36,6 +38,15 @@ const FrontPage = () => {
       </Stack>
     </form>
     </Box>
+    <Box rounded="md" background="white" width="90%"  padding="4" color="#2a2955">
+      <Text textStyle="md"  fontWeight="bold">Url</Text>
+    </Box>
+    <Box rounded="md" background="white" width="90%"  padding="4" color="#2a2955">
+      <Text textStyle="md">Prompt Content</Text>
+    </Box>
+    <Spinner color="blue.500" borderWidth="10px" size= "xl" />
+  
+    </Stack>
     </Center>
   )
 }
