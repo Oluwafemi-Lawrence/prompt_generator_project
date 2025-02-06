@@ -1,3 +1,4 @@
+import FrontPage from "./my_components/FrontPage"
 
 
 function App() {
@@ -5,7 +6,7 @@ function App() {
 
   return (
     <>
-      
+      <FrontPage/>
     </>
   )
 }
