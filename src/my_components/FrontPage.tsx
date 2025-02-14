@@ -116,7 +116,7 @@ const FrontPage = () => {
     }, [webhookSuccess])
 
     async function triggerCall() {
-      await sleep(30);
+      await sleep(40);
       handleWebhookSuccess()
       }
     
