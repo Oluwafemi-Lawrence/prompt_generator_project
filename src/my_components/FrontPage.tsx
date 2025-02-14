@@ -97,7 +97,7 @@ const FrontPage = () => {
       axios.get<PromptData[]>("https://script.google.com/macros/s/AKfycbwIFqq7T0bbLa_ktXeNWciekJ-M7OZo0N9mUV1SexKghGzWNL0y1Yr5heWjXK56Z3dj/exec")
       .then((res)=> {
         res.data.forEach((data)=>{
-          if (data.URL === posteddata) {
+          if (data.URL === posteddata && data.ID === uniqueCode) {
               setPrompt(data.Prompt)
           }
           else
