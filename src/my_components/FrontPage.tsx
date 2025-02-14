@@ -155,8 +155,8 @@ const FrontPage = () => {
           invalid={!!errors.instruction}
           errorText={errors.instruction?.message}
         >
-          <Input placeholder='what data will you like to extra'
-            {...register("instruction", { required: "You need to specify the data/information you want to extract" })}
+          <Input placeholder='Descreva as informações/dados que você gostaria de extrair'
+            {...register("instruction", { required: "Você precisa descrever as informações/dados que gostaria de extrair" })}
           />
         </Field>
 
