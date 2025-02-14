@@ -17,7 +17,7 @@ interface PromptData {
 
 const FrontPage = () => {
   
-  const [prompt, setPrompt] = useState("");
+  const [myprompt, setMyPrompt] = useState("");
   const [postingerror, setPostingerror] = useState("");
   const [retrivingerror, setRetrivingerror] = useState("")
   const [posteddata, setPosteddata] = useState("")
@@ -45,7 +45,7 @@ const FrontPage = () => {
     setUniqueCode(data.id)
     setInstruction(data.instruction)
     
-    setPrompt("")
+    setMyPrompt("")
     setRequestCanceled(false)
     setPostingErrorTracker(false)
 
@@ -53,7 +53,7 @@ const FrontPage = () => {
 
    const handleReset = ()=> {
     setPosteddata("")
-    setPrompt("")
+    setMyPrompt("")
     setRequestCanceled(true)
     setInstruction("")
    }
@@ -97,12 +97,13 @@ const FrontPage = () => {
       axios.get<PromptData[]>("https://script.google.com/macros/s/AKfycbwIFqq7T0bbLa_ktXeNWciekJ-M7OZo0N9mUV1SexKghGzWNL0y1Yr5heWjXK56Z3dj/exec")
       .then((res)=> {
         res.data.forEach((data)=>{
-          if (data.URL === posteddata && data.ID === uniqueCode) {
-              setPrompt(data.Prompt)
+          if (data.URL === posteddata) {
+              setMyPrompt(data.Prompt)
+              
           }
           else
-          setPrompt("Ops.. Algo deu errado. Entre em contato com o Mundo Dos Bots para investigar esse problema. Enquanto isso, você poderá tentar sua solicitação novamente depois de algum tempo")
-        
+          setMyPrompt("Ops.. Algo deu errado. Entre em contato com o Mundo Dos Bots para investigar esse problema. Enquanto isso, você poderá tentar sua solicitação novamente depois de algum tempo")
+          
           }
         )
       }
@@ -185,11 +186,11 @@ const FrontPage = () => {
     {posteddata && !prompt &&  <Text textStyle="sm" color="#ff9703">Carregando.... isso pode levar até 35 segundos</Text>}
     
    
-    {prompt && <Box rounded="md" background="white" width="90%"  padding="4" color="#2a2955" >
-      <Text textStyle="md">{prompt}
+    {myprompt && <Box rounded="md" background="white" width="90%"  padding="4" color="#2a2955" >
+      <Text textStyle="md">{myprompt}
       </Text>
     </Box>}
-    {posteddata && prompt==="" && <Spinner color="#ff9702" borderWidth="10px" size= "xl" />}
+    {posteddata && !myprompt && <Spinner color="#ff9702" borderWidth="10px" size= "xl" />}
   
     </Stack>
     </Center>
