@@ -182,10 +182,10 @@ const FrontPage = () => {
     { posteddata && <Box rounded="md" background="white" width="90%"  padding="4" color="#2a2955">
       <Flex gap="4" justify="space-between"> 
       <Text textStyle="md"  fontWeight="bold">{posteddata} </Text>
-      {myprompt && <Spinner color="#ff9702" borderWidth="2px" size= "sm" />}
+      {!myprompt && <Spinner color="#ff9702" borderWidth="2px" size= "sm" />}
       </Flex>
     </Box>}
-    {posteddata && myprompt &&  <Text textStyle="sm" color="#ff9703">Carregando.... isso pode levar até 60 segundos</Text>}
+    {posteddata && !myprompt &&  <Text textStyle="sm" color="#ff9703">Carregando.... isso pode levar até 60 segundos</Text>}
     
    
     {myprompt && <Box rounded="md" background="white" width="90%"  padding="4" color="#2a2955" >
