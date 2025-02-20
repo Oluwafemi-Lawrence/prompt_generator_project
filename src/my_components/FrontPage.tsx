@@ -97,26 +97,28 @@ const FrontPage = () => {
       axios.get<PromptData[]>("https://script.google.com/macros/s/AKfycbwIFqq7T0bbLa_ktXeNWciekJ-M7OZo0N9mUV1SexKghGzWNL0y1Yr5heWjXK56Z3dj/exec")
       .then((res)=> {
         res.data.forEach((data)=>{
-          if (data.URL === posteddata) {
+          if (data.URL === posteddata && data.ID) {
               setMyPrompt(data.Prompt)
+              
               
           }
           else
           setMyPrompt("Ops.. Algo deu errado. Entre em contato com o Mundo Dos Bots para investigar esse problema. Enquanto isso, você poderá tentar sua solicitação novamente depois de algum tempo")
           
+            
           }
         )
       }
       )
       .catch((error)=> {
         setRetrivingerror(error.message)
-        //setTimeout(resetError, 5000);
+        
       }
       )
     }, [webhookSuccess])
 
     async function triggerCall() {
-      await sleep(40);
+      await sleep(55);
       handleWebhookSuccess()
       }
     

@@ -1,6 +1,7 @@
 {
   "name": "mundodosbots_webscrapping",
   "private": true,
+  "homepage": "https://prompt.mundodosbots.com.br",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
